@@ -1,0 +1,57 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Nouveau Voyage{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title" style="color: #D0A343;">Créer un nouveau voyage</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #94BDB5;">
+          <li class="breadcrumb-item"><a href="#" style="color: #4F818C;">Voyage</a></li>
+          <li class="breadcrumb-item active" aria-current="page" style="color: #4F818C;">Ajouter voyage</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 grid-margin stretch-card">
+        <div class="card" style="border-color: #4F818C;">
+          <div class="card-body">
+            <h4 class="card-title" style="color: #D0A343;">Ajout voyage</h4>
+            <p class="card-description" style="color: #4F818C;">Veuillez remplir le formulaire ci-dessous :</p>
+            <form action="{{ path('app_voyage_new') }}" method="POST" enctype="multipart/form-data">
+              {{ form_start(form) }}
+              <div class="form-group" style="color: #4F818C;">
+                <label for="destination"> <i class="fas fa-map-marker-alt"></i></label>
+                {{ form_row(form.destination, { 'attr': {'class': 'form-control', 'placeholder': 'Destination'} }) }}
+              </div>
+              <div class="form-group" style="color: #4F818C;">
+                <label for="prix"> <i class="fas fa-money-bill-wave"></i></label>
+                {{ form_row(form.prix, { 'attr': {'class': 'form-control', 'placeholder': 'Prix'} }) }}
+              </div>
+              <div class="form-group" style="color: #4F818C;">
+                <label for="date"> <i class="fas fa-calendar-alt"></i></label>
+                {{ form_row(form.date, { 'attr': {'class': 'form-control', 'placeholder': 'Date'} }) }}
+              </div>
+              <div class="form-group" style="color: #4F818C;">
+                <label for="type"> <i class="fas fa-tags"></i></label>
+                {{ form_row(form.type, { 'attr': {'class': 'form-control', 'placeholder': 'Type'} }) }}
+              </div>
+              <div class="form-group" style="color: #4F818C;">
+                <label for="image"> <i class="fas fa-image"></i></label>
+                {{ form_row(form.image, { 'attr': {'class': 'form-control-file'} }) }}
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" style="background-color: #D0A343; border-color: #D0A343;"><i class="fas fa-save"></i> Enregistrer</button>
+              {{ form_end(form) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <!-- Footer Content Goes Here -->
+  </footer>
+</div>
+{% endblock %}

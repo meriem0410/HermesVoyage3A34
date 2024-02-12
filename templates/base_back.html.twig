@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}hermes voyage{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('back_office/assets/vendors/mdi/css/materialdesignicons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('back_office/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('back_office/assets/vendors/css/vendor.bundle.base.css') }}" />
+    <link rel="stylesheet" href="{{ asset('back_office/assets/vendors/font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('back_office/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('back_office/assets/css/style.css') }}" />
+    <link rel="shortcut icon" href="{{ asset('back_office/assets/images/favicon.png') }}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
+          <a class="sidebar-brand brand-logo" href="index.html"><img src="{{ asset('back_office/assets/images/hermes.png') }}" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="{{ asset('back_office/assets/images/hermes.png') }}" alt="logo" /></a>
+        </div>
+        {% block sidebar %}
+          <!-- Sidebar Content Goes Here -->
+        {% endblock %}
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <div id="theme-settings" class="settings-panel">
+          <!-- Theme Settings Content Goes Here -->
+        </div>
+        <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
+          <!-- Navbar Content Goes Here -->
+        </nav>
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+            <div class="page-header flex-wrap">
+              <h3 class="mb-0">{% block page_heading %}Bienvenue à Hermes Voyage{% endblock %}</h3>
+              <div class="d-flex">
+                <!-- Page Header Buttons Goes Here -->
+              </div>
+            </div>
+            {% block content %}
+              <!-- Main Content Goes Here -->
+            {% endblock %}
+          </div>
+          <footer class="footer">
+            <!-- Footer Content Goes Here -->
+          </footer>
+        </div>
+      </div>
+    </div>
+    <!-- Container Scroller -->
+    <!-- Plugins:js -->
+    <script src="{{ asset('back_office/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <!-- Endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{{ asset('back_office/assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <!-- End plugin js for this page -->
+    <!-- Inject:js -->
+    <script src="{{ asset('back_office/assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('back_office/assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('back_office/assets/js/misc.js') }}"></script>
+    <!-- Endinject -->
+    <!-- Custom js for this page -->
+    <script src="{{ asset('back_office/assets/js/dashboard.js') }}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programme{% endblock %}
+
+{% block body %}
+    <h1>Programme</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ programme.id }}</td>
+            </tr>
+            <tr>
+                <th>Activité</th>
+                <td>{{ programme.activité }}</td>
+            </tr>
+            <tr>
+                <th>Date_depart</th>
+                <td>{{ programme.dateDepart ? programme.dateDepart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_retour</th>
+                <td>{{ programme.dateRetour ? programme.dateRetour|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tarif</th>
+                <td>{{ programme.tarif }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ programme.pays }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_programme_index') }}">back to list</a>
+
+    <a href="{{ path('app_programme_edit', {'id': programme.id}) }}">edit</a>
+
+    {{ include('programme/_delete_form.html.twig') }}
+{% endblock %}

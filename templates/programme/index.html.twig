@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programme index{% endblock %}
+
+{% block body %}
+    <h1>Programme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Activité</th>
+                <th>Date_depart</th>
+                <th>Date_retour</th>
+                <th>Tarif</th>
+                <th>Pays</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programme in programmes %}
+            <tr>
+                <td>{{ programme.id }}</td>
+                <td>{{ programme.activité }}</td>
+                <td>{{ programme.dateDepart ? programme.dateDepart|date('Y-m-d') : '' }}</td>
+                <td>{{ programme.dateRetour ? programme.dateRetour|date('Y-m-d') : '' }}</td>
+                <td>{{ programme.tarif }}</td>
+                <td>{{ programme.pays }}</td>
+                <td>
+                    <a href="{{ path('app_programme_show', {'id': programme.id}) }}">show</a>
+                    <a href="{{ path('app_programme_edit', {'id': programme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_programme_new') }}">Create new</a>
+{% endblock %}
