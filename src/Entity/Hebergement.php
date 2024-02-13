@@ -3,9 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\HebergementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: HebergementRepository::class)]
+#[Vich\Uploadable]
+ 
 class Hebergement
 {
     #[ORM\Id]
@@ -28,14 +37,21 @@ class Hebergement
     #[ORM\Column]
     private ?int $room = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    #[Vich\UploadableField(mapping: 'hebergement_images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column (type : 'string' )]
+    private ?string $imageName = null;
+   
+    #[ORM\Column(length: 255)]
     private ?string $amenities = null;
+
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
+
 
     public function getId(): ?int
     {
@@ -114,16 +130,26 @@ class Hebergement
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImageFile(): ?File
     {
-        return $this->image;
+        return $this->imageFile;
     }
 
-    public function setImage(?string $image): static
-    {
-        $this->image = $image;
+    public function setImageFile(?File $imageFile=null): void
+    { 
+        $this->imageFile = $imageFile;
 
-        return $this;
+      
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
     public function getAmenities(): ?string
@@ -137,4 +163,17 @@ class Hebergement
 
         return $this;
     }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
 }

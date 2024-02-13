@@ -6,6 +6,8 @@ use App\Entity\Hebergement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 class Hebergement1Type extends AbstractType
 {
@@ -18,7 +20,14 @@ class Hebergement1Type extends AbstractType
             ->add('maxguest')
             ->add('room')
             ->add('description')
-            ->add('image')
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image du logement ',
+                'label_attr' => [
+                    'class' => 'form-label mt-4'
+                ],
+                'required' => false
+            ])
+
             ->add('amenities')
         ;
     }

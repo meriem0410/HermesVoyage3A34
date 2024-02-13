@@ -36,9 +36,9 @@
                 <td>{{ hebergement.description }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ hebergement.image }}</td>
-            </tr>
+            <div class="hebergement_image">
+			<img style="max-width: 500px;" src="{{ vich_uploader_asset(hebergement, 'imageFile') }}">
+		</div>
             <tr>
                 <th>Amenities</th>
                 <td>{{ hebergement.amenities }}</td>

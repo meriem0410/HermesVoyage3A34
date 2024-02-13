@@ -6,6 +6,7 @@ use App\Entity\Hebergement;
 use App\Form\Hebergement1Type;
 use App\Repository\HebergementRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/hebergement')]
 class HebergementController extends AbstractController
 {
+    
     #[Route('/', name: 'app_hebergement_index', methods: ['GET'])]
     public function index(HebergementRepository $hebergementRepository): Response
     {
